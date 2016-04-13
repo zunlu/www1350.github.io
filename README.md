@@ -1,0 +1,2 @@
+# absurd.github.io
+MyBlog
