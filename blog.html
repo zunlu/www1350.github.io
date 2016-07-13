@@ -29,19 +29,24 @@
 	
 </div>
 	<script type="text/ractive" id="listTpl">
-
-    <ul class="content">
-    		<div class="left_zl">
+	<div class="content">
+			<div class="left_zl">
 			<img src="images/beijing3.png">
 			<p>Absurd</p>
 			<p>为我和吴手机是的苏东坡我的骄傲是单卡</p>
 		</div>
+			<div class="content-list">
+ <ul class="postlist">
         {{#posts}}
-        <li class="content-list"><a href="#post/{{number}}">{{title}}</a><span class="datetime">{{formatTime(created_at)}}</span></li>
+        <li class="postlist"><a href="#post/{{number}}">{{title}}</a><span class="datetime">{{formatTime(created_at)}}</span></li>
         {{/posts}}
     </ul>
+    	</div>
     {{#prev}}<a href="#p{{page-1}}" class="prev">上一页</a>{{/prev}}
     {{#next}}<a href="#p{{page+1}}" class="next">下一页</a>{{/next}}
+	
+	</div>
+
 </script>
 <script type="text/ractive" id="detailTpl">
     {{#post}}
