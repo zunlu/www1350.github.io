@@ -34,14 +34,11 @@
 			<img src="images/beijing3.png">
 			<p>Absurd</p>
 		</div>
-			<div class="content-list">
- <ul class="postlist">
+<div class="content-list">
         {{#posts}}
         <a href="#post/{{number}}">{{title}}</a><span class="datetime">{{formatTime(created_at)}}</span>
         {{/posts}}
         </div>
-        
-    </ul>
     
     {{#prev}}<a href="#p{{page-1}}" class="prev">上一页</a>{{/prev}}
     {{#next}}<a href="#p{{page+1}}" class="next">下一页</a>{{/next}}
