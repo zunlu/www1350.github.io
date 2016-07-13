@@ -37,11 +37,11 @@
 		</div>
 			<div class="content-list">
  <ul class="postlist">
-        {{#posts}}
+        {{#posts}}	</div>
         <li class="postlist"><a href="#post/{{number}}">{{title}}</a><span class="datetime">{{formatTime(created_at)}}</span></li>
         {{/posts}}
     </ul>
-    	</div>
+    
     {{#prev}}<a href="#p{{page-1}}" class="prev">上一页</a>{{/prev}}
     {{#next}}<a href="#p{{page+1}}" class="next">下一页</a>{{/next}}
 	
