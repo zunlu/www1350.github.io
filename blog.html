@@ -33,13 +33,14 @@
 			<div class="left_zl">
 			<img src="images/beijing3.png">
 			<p>Absurd</p>
-			<p>为我和吴手机是的苏东坡我的骄傲是单卡</p>
 		</div>
 			<div class="content-list">
  <ul class="postlist">
-        {{#posts}}	</div>
-        <li class="postlist"><a href="#post/{{number}}">{{title}}</a><span class="datetime">{{formatTime(created_at)}}</span></li>
+        {{#posts}}
+        <a href="#post/{{number}}">{{title}}</a><span class="datetime">{{formatTime(created_at)}}</span>
         {{/posts}}
+        </div>
+        
     </ul>
     
     {{#prev}}<a href="#p{{page-1}}" class="prev">上一页</a>{{/prev}}
