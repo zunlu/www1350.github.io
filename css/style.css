@@ -79,3 +79,6 @@ img{
 .ds-social-links{
   width: 300px !important; /* 修正多说在 iphone5 宽度下带来的横向滚动条的问题*/
 }
+.fr{
+  float:right;
+}

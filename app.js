@@ -35,7 +35,7 @@ function index(page){
                     posts : data,
                     next  : next,
                     prev  : prev,
-                    page  : page
+                    page  : page,
                 }
             });
             window._G.postList[page] = ractive.toHTML();
@@ -45,7 +45,7 @@ function index(page){
             for(i in data){
               var ractive = new Ractive({
                   template : '#detailTpl',
-                  data     : {post: data[i]}
+                  data     : {post: data[i]},
               });
               window._G.post[data[i].number] = {};
               window._G.post[data[i].number].body = ractive.toHTML();
@@ -98,7 +98,7 @@ function detail(id){
             var ractive = new Ractive({
                  el: "#container",
                  template: '#detailTpl',
-                 data: {post: data}
+                 data: {post: data},
             });
 
             $('title').html(data.title + " | " + _config['blog_name']);
@@ -116,6 +116,8 @@ helpers.markdown2HTML = function(content){
 helpers.formatTime = function(time){
     return time.substr(0,10);
 }
+
+
 
 var routes = {
     '/': index,
