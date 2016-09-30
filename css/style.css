@@ -82,3 +82,11 @@ img{
 .fr{
   float:right;
 }
+
+.label{
+  display:inline-block;padding:3px 4px;font-size:12px;font-weight:600;line-height:1;color:#fff;border-radius:2px;box-shadow:inset 0 -1px 0 rgba(0,0,0,0.12)
+}
+
+.label:hover{
+  text-decoration:none
+}

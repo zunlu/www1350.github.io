@@ -8,9 +8,9 @@
     <link rel='stylesheet' href='css/style.css' type='text/css'/>
     <link rel="stylesheet" href="css/highlight.css">
     <script src="js/jquery-2.0.3.min.js"></script>
-    <script src="js/director.min.js"></script>   
-    <script src="js/ractive.min.js"></script>    
-    <script src="js/marked.min.js"></script>    
+    <script src="js/director.min.js"></script>
+    <script src="js/ractive.min.js"></script>
+    <script src="js/marked.min.js"></script>
     <script src="config.js"></script>
     <script src="http://static.duoshuo.com/embed.js"></script>
     <script src="http://apps.bdimg.com/libs/highlight.js/8.6/highlight.min.js"></script>
@@ -30,26 +30,28 @@
     </ul>
     {{#prev}}<a href="#p{{page-1}}" class="prev">上一页</a>{{/prev}}
     {{#next}}<a href="#p{{page+1}}" class="next">下一页</a>{{/next}}
+
 </script>
 <script type="text/ractive" id="detailTpl">
     {{#post}}
-     <h1>{{title}}
-     <h3 class="fr">
-     {{#labels}}
+     <h1>
+          <center>{{title}}</center>
+          <span class="create_at fr">发表于 {{formatTime(created_at)}}</span>
+       </h1>
+      <h3 >标签
+        {{#labels}}
+        <span class="label">
         <a href="https://github.com/www1350/javaweb/issues?q=is%3Aissue+is%3Aopen+label%3A{{name}}" aria-label="{{name}}" class="label v-align-text-top labelstyle-d4c5f9 linked-labelstyle-d4c5f9 tooltipped tooltipped-n" style="background-color: #{{color}}; color: #2b2833;">
             {{name}}
-        </a>
+        </a></span>
         {{/labels}}
-        </h3>
-        </h1>
-     <span class="create_at">发表于 {{formatTime(created_at)}}
-     </span>
+       </h3>
 
      <div class="content">{{{markdown2HTML(body)}}}</div>
     {{/post}}
+
 </script>
 <script src="app.js"></script>
-
 
 
 <!--<code  style="white-space:pre" >
