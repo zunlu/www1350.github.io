@@ -86,7 +86,64 @@ function toggleDuoshuoComments(container, id){
     DUOSHUO.EmbedThread(el);
     jQuery(container).append(el);
 }
+function search(key){
+    var page = 1;
+    window._G = {post: {}, postList: {}};
+    $('title').html(_config['blog_name']);
+    if(_G.postList[page] != undefined){
+        $('#container').html(_G.postList[page]);
+        return;
+    }
+    $.ajax({
+               url:"https://api.github.com/search/issues?q="+key+" user:"+_config['owner']+" repo:"+_config['repo']+"&sort=stars&order=desc",
+               data:{
+                   filter       : 'created',
+                   page         : page,
+                   // access_token : _config['access_token'],
+                   per_page     : _config['per_page']
+               },
+               beforeSend:function(){
+                   $('#container').html('<center><img src="loading.gif" alt="loading" class="loading"></center>');
+               },
+               success:function(data, textStatus, jqXHR){
+                   var link = jqXHR.getResponseHeader("Link") || "";
+                   var next = false;
+                   var prev = false;
+                   if (link.indexOf('rel="next"') > 0) {
+                       next = true;
+                   }
+                   if (link.indexOf('rel="prev"') > 0) {
+                       prev = true;
+                   }
+                  data = data.items;
+                   var ractive = new Ractive({
+                       template: '#listTpl',
+                       data: {
+                           posts: data,
+                           next: next,
+                           prev: prev,
+                           page: page
+                       }
+                   });
+                   window._G.postList[page] = ractive.toHTML();
+                   $('#container').html(window._G.postList[page]);
 
+                   //将文章列表的信息存到全局变量中，避免重复请求
+                   for (i in data) {
+                       var ractive = new Ractive({
+                           template: '#detailTpl',
+                           data: {post: data[i]}
+                       });
+                       window._G.post[data[i].number] = {};
+                       window._G.post[data[i].number].body = ractive.toHTML();
+
+                       var title = data[i].title + " | " + _config['blog_name'];
+                       window._G.post[data[i].number].title = title;
+                   }
+               }
+           });
+
+}
 function detail(id){
     if(!window._G){
       window._G = {post: {}, postList: {}};
@@ -136,7 +193,8 @@ helpers.formatTime = function(time){
 var routes = {
     '/': index,
     'p:page': index,
-    'post/:postId': detail
+    'post/:postId': detail,
+    'search/:key': search
 };
 var router = Router(routes);
 router.init('/');
