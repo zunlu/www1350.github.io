@@ -7,6 +7,20 @@ function index(page){
       $('#container').html(_G.postList[page]);
       return;
     }
+        $.ajax({
+                   url:"https://api.github.com/repos/"+_config['owner']+"/"+_config['repo']+"/labels",
+                   data:{
+                   },
+                   success:function(data, textStatus, jqXHR){
+                       var ractive = new Ractive({
+                           template : '#listLab',
+                           data     : {
+                               labels : data
+                           }
+                       });
+                       $('#labels').html(ractive.toHTML());
+                   }
+               });
 
     $.ajax({
         url:"https://api.github.com/repos/"+_config['owner']+"/"+_config['repo']+"/issues",

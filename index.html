@@ -32,6 +32,17 @@
     {{#next}}<a href="#p{{page+1}}" class="next">下一页</a>{{/next}}
 
 </script>
+<div id="labels"></div>
+<script type="text/ractive" id="listLab">
+    <ul class="postlist">
+        {{#labels}}
+         <span class="label">
+        <a href="https://github.com/www1350/javaweb/issues?q=is%3Aissue+is%3Aopen+label%3A{{name}}" aria-label="{{name}}" class="label v-align-text-top labelstyle-d4c5f9 linked-labelstyle-d4c5f9 tooltipped tooltipped-n" style="background-color: #{{color}}; color: #2b2833;">
+            {{name}}
+        </a></span>
+        {{/labels}}
+    </ul>
+</script>
 <script type="text/ractive" id="detailTpl">
     {{#post}}
      <h1>
