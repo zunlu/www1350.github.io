@@ -153,7 +153,7 @@ function detail(id){
     if(_G.post[id].body != undefined){
       $('#container').html(_G.post[id].body);
       $('title').html(_G.post[id].title);
-      toggleDuoshuoComments('#container', id);
+      //toggleDuoshuoComments('#container', id);//多说下线了。。
       highlight();
       return;
     }
@@ -173,7 +173,7 @@ function detail(id){
             });
 
             $('title').html(data.title + " | " + _config['blog_name']);
-            toggleDuoshuoComments('#container', id);
+            //toggleDuoshuoComments('#container', id);
             highlight();
         }
     });  
